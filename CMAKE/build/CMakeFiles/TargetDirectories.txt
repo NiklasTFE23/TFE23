@@ -1,3 +1,0 @@
-/workspaces/TFE23/CMAKE/build/CMakeFiles/cmake_test_exec.dir
-/workspaces/TFE23/CMAKE/build/CMakeFiles/edit_cache.dir
-/workspaces/TFE23/CMAKE/build/CMakeFiles/rebuild_cache.dir

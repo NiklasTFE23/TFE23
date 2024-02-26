@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/cmake_test_exec.dir/CMake.c.o -o cmake_test_exec 
