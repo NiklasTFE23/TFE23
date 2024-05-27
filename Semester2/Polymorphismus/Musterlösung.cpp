@@ -1,6 +1,9 @@
 #include <cstdint>
 #include <iostream>
 #include <string>
+#include <vector>
+#include <memory>
+#include <random>
 
 class Animal
 {
@@ -50,7 +53,7 @@ class Bird : public Animal
 
 auto main() -> int
 {
-    Cat sylvester;
+    /*Cat sylvester;
     sylvester.make_noise();
     Bird tweetie;
     tweetie.make_noise();
@@ -60,7 +63,31 @@ auto main() -> int
     sylvester + garfield;
     sylvester + tweetie;
     tweetie + sylvester;
-    tweetie + woodstock;
+    tweetie + woodstock;*/
+
+    std::vector<std::shared_ptr<Animal>> animals;
+
+    std::random_device seed;
+    std::mt19937 gen(seed());
+    std::uniform_int_distribution<> distribution(0, 1);
+
+        for (int i = 0; i < 10; ++i)
+    {
+        // if(rand() > (RAND_MAX / 2))
+        if (static_cast<bool>(distribution(gen)))
+        {
+            animals.push_back(std::make_shared<Cat>());
+        }
+        else
+        {
+            animals.push_back(std::make_shared<Bird>());
+        }
+    }
+
+    for (auto &itr : animals)
+    {
+        itr->make_noise();
+    }
 
     return 0;
 }
