@@ -73,7 +73,6 @@ auto main() -> int
 
         for (int i = 0; i < 10; ++i)
     {
-        // if(rand() > (RAND_MAX / 2))
         if (static_cast<bool>(distribution(gen)))
         {
             animals.push_back(std::make_shared<Cat>());
