@@ -16,6 +16,9 @@ find_package( OpenCV ) # alternative: find_package( OpenCV REQUIRED )
 
 # continue only if opencv is found
 if(OpenCV_FOUND)
+
+include(FetchContent)
+
     # add executable for opencv hello world
     add_executable(opencv_hello Hello_world.cpp)
     # declare the path to the image we want to work with
@@ -24,19 +27,33 @@ if(OpenCV_FOUND)
     target_include_directories(opencv_hello PUBLIC ${OpenCV_INCLUDE_DIRS} )
     target_link_libraries( opencv_hello ${OpenCV_LIBRARIES})
 
-    # add an executable for opencv canny 
-    add_executable(opencv_canny src/canny_edges.cpp)
+    # add an executable for opencv contours 
+    #add_executable(opencv_contours src/contours.cpp)
     # declare the path to the image we want to work with
-    target_compile_definitions(opencv_canny PRIVATE IMGPATH="${CMAKE_CURRENT_LIST_DIR}/resources" OUTPATH="${CMAKE_CURRENT_BINARY_DIR}")
+    #target_compile_definitions(opencv_contours PRIVATE IMGPATH="${CMAKE_CURRENT_LIST_DIR}/resources" OUTPATH="${CMAKE_CURRENT_BINARY_DIR}")
     # include and link all opencv stuff
-    target_include_directories(opencv_canny PUBLIC ${OpenCV_INCLUDE_DIRS} )
-    target_link_libraries( opencv_canny ${OpenCV_LIBRARIES})
+    #target_include_directories(opencv_contours PUBLIC ${OpenCV_INCLUDE_DIRS} )
+    #target_link_libraries( opencv_contours ${OpenCV_LIBRARIES})
 
     # add an executable for opencv contours 
-    add_executable(opencv_contours src/contours.cpp)
+    add_executable(Aufgabe1 Aufgabe1.cpp)
     # declare the path to the image we want to work with
-    target_compile_definitions(opencv_contours PRIVATE IMGPATH="${CMAKE_CURRENT_LIST_DIR}/resources" OUTPATH="${CMAKE_CURRENT_BINARY_DIR}")
+    target_compile_definitions(Aufgabe1 PRIVATE IMGPATH="${CMAKE_CURRENT_LIST_DIR}" OUTPATH="${CMAKE_CURRENT_BINARY_DIR}")
     # include and link all opencv stuff
-    target_include_directories(opencv_contours PUBLIC ${OpenCV_INCLUDE_DIRS} )
-    target_link_libraries( opencv_contours ${OpenCV_LIBRARIES})
+    target_include_directories(Aufgabe1 PUBLIC ${OpenCV_INCLUDE_DIRS} )
+    target_link_libraries( Aufgabe1 ${OpenCV_LIBRARIES})
+
+    FetchContent_Declare(cvplot
+    GIT_REPOSITORY https://github.com/Profactor/cv-plot.git
+    GIT_TAG origin/master) # or whatever tag you want
+    FetchContent_GetProperties(cvplot)
+    #if(NOT cvplot_POPULATED)
+    set(CVPLOT_USE_CONAN FALSE)
+    FetchContent_Populate(cvplot)
+
+    # add executable for cvplot hello world
+    add_executable(cvplot_hello CVPlot.cpp)
+    target_include_directories(cvplot_hello PUBLIC ${OpenCV_INCLUDE_DIRS} ${cvplot_SOURCE_DIR}/CvPlot/inc)
+    target_link_libraries( cvplot_hello ${OpenCV_LIBRARIES})
+
 endif()

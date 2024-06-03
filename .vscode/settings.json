@@ -141,5 +141,6 @@
     "ios": "cpp",
     "locale": "cpp",
     "queue": "cpp"
-  }
+  },
+  "cmake.sourceDirectory": "/workspaces/TFE23/Semester2/OpenCV"
 }

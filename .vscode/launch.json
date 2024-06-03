@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/workspaces/TFE23/Ordner1",
-      "program": "/workspaces/TFE23/Ordner1/build/Debug/outDebug",
+      "cwd": "/workspaces/TFE23/Semester2/OpenCV",
+      "program": "/workspaces/TFE23/Semester2/OpenCV/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
